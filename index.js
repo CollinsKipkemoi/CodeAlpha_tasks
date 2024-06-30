@@ -23,3 +23,16 @@ sidebarItems.forEach(item => {
     listItem.innerHTML = `<a href="#"><i class="${item.icon}"></i> ${item.name}</a>`;
     sidebarItemsDiv.appendChild(listItem);
 });
+
+// current month
+const month = new Date().toLocaleString('default', { month: 'long' });
+const year = new Date().getFullYear();
+document.querySelector(".datepicker-top").innerHTML = `${month} ${year}`;
+const currentDate = new Date().getDate();
+const dates = document.querySelectorAll(".date");
+dates.forEach(date=> {
+    if(date.innerHTML == currentDate){
+        date.classList.add("current-day");
+        
+    }
+})
