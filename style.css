@@ -11,7 +11,6 @@ body {
     background-color: rgb(58, 56, 54);
     width: 100vw;
     height: 100vh;
-    border: 1px solid blue;
 }
 
 .bars {
@@ -23,9 +22,10 @@ body {
 
 .sidebar {
     background-color: rgb(58, 56, 54);
-    width: 250px;
+    width: 300px;
     height: 100vh;
-    border: 1px solid green;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .sidebar .logo{
@@ -44,6 +44,53 @@ body {
 
 .sidebar a{
     text-decoration: none;
-    color: white;
+    color: grey;
     font-size: 20px;
+}
+
+/* *MAIN BAR */
+.mainbar{
+    width: calc(100% - 300px);
+    height: 100vh;
+    background-color: rgb(45, 46, 48);
+}
+
+.mainbar .searchbar{
+    width: 100%;
+    background-color: rgb(45, 46, 48);
+    margin-top: 20px;
+}
+
+.mainbar .searchbar input{
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(58, 56, 54);
+    border: 1px solid rgb(58, 56, 54);
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+.mainbar .searchbar button{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    color: grey;
+    font-size: 20px;
+}
+
+.mainbar .searchbar button{
+    background-color: rgb(58, 56, 54);
+    border: 1px solid rgb(58, 56, 54);
+}
+
+.mainbar .searchbar input:active, .mainbar .searchbar input:focus{
+    background-color: rgb(58, 56, 54);
+    border: 1px solid rgb(58, 56, 54);
+    outline: none;
+}
+
+.searchbar input{
+    color: grey ;
 }
