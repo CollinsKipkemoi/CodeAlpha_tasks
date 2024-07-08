@@ -21,6 +21,10 @@ const sidebarItems = [
   },
 ];
 
+let allTasksCount = 0;
+let doneTasksCount = 0;
+let undoneTasksCount = 0;
+
 const sidebarItemsDiv = document.querySelector(".sidebarItems");
 sidebarItems.forEach((item) => {
   const listItem = document.createElement("li");
@@ -45,6 +49,8 @@ const input = document.querySelector(".form-control");
 const addTask = document.querySelector("#addTask");
 const myTasks = document.querySelector(".my-tasks");
 const counter = document.querySelector(".count");
+const progress = document.querySelector(".progress");
+const progressBar = document.querySelector(".progress-bar");
 
 addTask.addEventListener("click", () => {
   const task = input.value;
@@ -54,8 +60,13 @@ addTask.addEventListener("click", () => {
       done: false,
     };
     tasks.push(taskItem)
+    allTasksCount++;
+    undoneTasksCount++;
     input.value = "";
     renderTasks();
+    console.log(`All: ${allTasksCount}, Done: ${doneTasksCount}`)
+    counter.innerHTML = `(${allTasksCount})`
+    updateBarWidths();
   }
 });
 
@@ -74,6 +85,11 @@ function renderTasks() {
         taskContent.classList.toggle("done");
         document.querySelectorAll(".doneRadio")[index].checked = true
         document.querySelector(`.editButton-${index}`).style.display = "none";
+        doneTasksCount++;
+        undoneTasksCount--;
+        console.log(`All: ${allTasksCount}, Done: ${doneTasksCount}`)
+        counter.innerHTML = `(${allTasksCount})`
+        updateBarWidths();
       }
     });
     taskContent.appendChild(doneRadio);
@@ -125,3 +141,16 @@ function saveTask(index, input) {
     console.log("Task cannot be empty.");
   }
 }
+
+function updateBarWidths() {
+  if (allTasksCount === 0 || doneTasksCount === 0) {
+    progressBar.style.width = "0%";
+    document.querySelector(".progress-value").innerHTML = "0%";
+  } else {
+    const progressWidth = (doneTasksCount / allTasksCount) * 100;
+    progressBar.style.width = `${progressWidth}%`;
+    document.querySelector(".progress-value").innerHTML = `${progressWidth}%`;
+  }
+}
+
+updateBarWidths();

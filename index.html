@@ -23,18 +23,18 @@
         <div class="mainbar container">
             <div class="main" style="display: grid; grid-template-columns: 2fr 1fr;gap:20px;">
                 <div class="main-1">
-                        <div class="task-form">
-                            <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title">
-                            <button type="button" id="addTask">Add</button>                            
+                    <div class="task-form">
+                        <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title">
+                        <button type="button" id="addTask">Add</button>
+                    </div>
+                    <div class="tasks-div container">
+                        <p>My Tasks <span class="count"></span></p>
+                        <div class="my-tasks">
+                            <ul>
+
+                            </ul>
                         </div>
-                        <div class="tasks-div container">
-                            <p>My Tasks <span class="count">(0)</span></p>
-                            <div class="my-tasks">
-                                <ul>
-    
-                                </ul>
-                            </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="main-2">
                     <div class="datepicker">
@@ -85,6 +85,19 @@
                             <button class="date faded">2</button>
                             <button class="date faded">3</button>
                         </div>
+                    </div>
+                    <div class="progress-wrapper">
+                        <p>
+                            Progress
+                        </p>
+                        <br>
+                        <div class="progress-info">
+                            <p>Task done: <span class="progress-value"></span></p>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
