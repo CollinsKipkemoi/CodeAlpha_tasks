@@ -49,7 +49,11 @@ const counter = document.querySelector(".count");
 addTask.addEventListener("click", () => {
   const task = input.value;
   if (task !== "") {
-    tasks.push(task);
+    const taskItem = {
+      task: task,
+      done: false,
+    };
+    tasks.push(taskItem)
     input.value = "";
     renderTasks();
   }
@@ -62,20 +66,62 @@ function renderTasks() {
     const taskContent = document.createElement("div");
     taskContent.classList.add("taskContent");
     const doneRadio = document.createElement("input");
-    doneRadio.setAttribute("type", "radio");
+    doneRadio.setAttribute("type", "checkbox");
+    doneRadio.classList.add("doneRadio");
+    doneRadio.addEventListener("click", () => {
+      if (task.done === false) {
+        task.done = true;
+        taskContent.classList.toggle("done");
+        document.querySelectorAll(".doneRadio")[index].checked = true
+        document.querySelector(`.editButton-${index}`).style.display = "none";
+      }
+    });
     taskContent.appendChild(doneRadio);
     const taskSpan = document.createElement("span");
-    taskSpan.textContent = task;
+    taskSpan.textContent = task.task;
     taskContent.appendChild(taskSpan);
     const Xbutton = document.createElement("i");
+    const editButton = document.createElement("i");
+    editButton.setAttribute("class", `fa-solid fa-pen editButton-${index}`);
+    editButton.onclick = () => editTask(index, taskSpan);
     Xbutton.setAttribute("class", "fa-solid fa-trash");
     Xbutton.addEventListener("click", () => {
       tasks.splice(index, 1);
       renderTasks();
     });
-    counter.innerHTML =  `(${tasks.length})` 
+    counter.innerHTML = `(${tasks.length})`
     taskLi.appendChild(taskContent);
     taskLi.appendChild(Xbutton);
-    myTasks.appendChild(taskLi);    
+    taskLi.appendChild(editButton);
+    myTasks.appendChild(taskLi);
   });
+}
+
+
+function editTask(index, taskSpan) {
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = taskSpan.textContent;
+  input.classList.add("edit-input");
+
+  taskSpan.parentNode.replaceChild(input, taskSpan);
+  input.focus();
+  input.select();
+
+  input.addEventListener("blur", () => saveTask(index, input));
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      saveTask(index, input);
+    }
+  });
+}
+
+function saveTask(index, input) {
+  const newTaskText = input.value.trim();
+  if (newTaskText) {
+    tasks[index].task = newTaskText;
+    renderTasks();
+  } else {
+    console.log("Task cannot be empty.");
+  }
 }

@@ -299,3 +299,29 @@ button {
 	gap: 15px;
 
 }
+
+.fa-pen{
+	position: absolute;
+	right: 40px;
+
+}
+
+.done{
+	color: rgb(206, 204, 204);
+	text-decoration: line-through;
+}
+
+.fa-pen:hover, .fa-trash:hover{
+	cursor: pointer;
+	color: rgb(253, 65, 60);
+}
+
+.edit-input {
+	margin: 0;
+	padding: 5px;
+	font-size: 16px;
+  }
+  .edit-btn {
+	margin-left: 10px;
+	cursor: pointer;
+  }
