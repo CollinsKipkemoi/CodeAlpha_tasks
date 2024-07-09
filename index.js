@@ -99,6 +99,9 @@ function renderTasks() {
     taskContent.appendChild(doneRadio);
     const taskSpan = document.createElement("span");
     taskSpan.textContent = task.task;
+    if(task.done) {
+      taskContent.classList.add("done");
+    }
     taskContent.appendChild(taskSpan);
     const Xbutton = document.createElement("i");
     const editButton = document.createElement("i");
