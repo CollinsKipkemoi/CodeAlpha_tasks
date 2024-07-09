@@ -46,15 +46,21 @@ addTask.addEventListener("click", () => {
 function renderTasks() {
   myTasks.innerHTML = "";
   tasks.forEach((task, index) => {
-    
+    // If task is done, toggle done class
+    if (task.done) {
+      document.querySelectorAll(".doneRadio")[index].checked = true;
+      document.querySelector(`.editButton-${index}`).style.display = "none";
+      document.querySelectorAll(".taskContent")[index].classList.add("done");
+    }
     const taskLi = document.createElement("li");
     const taskContent = document.createElement("div");
     taskContent.classList.add("taskContent");
     const doneRadio = document.createElement("input");
     doneRadio.setAttribute("type", "checkbox");
+    task.done ? doneRadio.checked = true : doneRadio.checked = false;
     doneRadio.classList.add("doneRadio");
     doneRadio.addEventListener("click", () => {
-      if (task.done === false) {
+      if (!task.done) {
         task.done = true;
         taskContent.classList.toggle("done");
         document.querySelectorAll(".doneRadio")[index].checked = true
@@ -65,6 +71,7 @@ function renderTasks() {
         counter.innerHTML = `(${allTasksCount})`
         updateBarWidths();
       }
+      console.log(tasks);
     });
     taskContent.appendChild(doneRadio);
     const taskSpan = document.createElement("span");
@@ -77,6 +84,7 @@ function renderTasks() {
     Xbutton.setAttribute("class", "fa-solid fa-trash");
     Xbutton.addEventListener("click", () => {
       tasks.splice(index, 1);
+      allTasksCount--;
       renderTasks();
     });
     counter.innerHTML = `(${tasks.length})`
