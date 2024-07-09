@@ -15,6 +15,8 @@ body {
 
 .bars {
     display: flex;
+	width: 100vw;
+	height: 100vh;
 
 }
 
@@ -36,17 +38,28 @@ body {
 
 .sidebar ul{
     list-style: none;
-    color: white;
+    color: rgb(191, 190, 190);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
+.sidebar ul li{
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.sidebar ul li:hover{
+	cursor: pointer;
+	color: rgb(253, 65, 60);
+}
 .sidebar a{
     text-decoration: none;
     color: grey;
     font-size: 20px;
 }
+
 
 /* *MAIN BAR */
 .mainbar{
@@ -97,6 +110,7 @@ body {
 .main{
     margin-top: 20px;
     background-color: rgb(45, 46, 48);
+	display: flex ;
 }
 .main-1, .main-2{
     border-radius: 7px;
@@ -350,4 +364,16 @@ button {
 
   .progress-wrapper > p, .datepicker-top{
 	font-size: 20px;
+  }
+
+  /*  */
+
+  .about{
+	display: none;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	height: 100vh;
+	padding: 30px;
+	color: rgb(206, 204, 204);
   }
