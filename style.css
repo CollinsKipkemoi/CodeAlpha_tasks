@@ -15,23 +15,31 @@ body {
 
 .bars {
     display: flex;
+	gap: 10px;
+	background-color: rgb(45, 46, 48);
 
 }
 
 /* *SIDEBAR */
 
+.bars{
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 20% 1fr;
+}
+
 .sidebar {
     background-color: rgb(58, 56, 54);
-    width: 300px;
     height: 100vh;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+	border-radius: 8px;
 }
 
 .sidebar .logo{
     display: flex;
     align-items: center;
     justify-content: center;
+	border-radius: 8px;
 }
 
 .sidebar ul{
@@ -50,7 +58,6 @@ body {
 
 /* *MAIN BAR */
 .mainbar{
-    width: calc(100% - 300px);
     height: 100vh;
     background-color: rgb(45, 46, 48);
 }
@@ -350,4 +357,31 @@ button {
 
   .progress-wrapper > p, .datepicker-top{
 	font-size: 20px;
+  }
+
+  .sidebar a:hover{
+	color: rgb(253, 65, 60);
+  }
+
+  .sidebar a{
+	display: flex;
+	align-items: center;
+	gap: 15px;
+  }
+
+  .about{
+	display: none;
+	border-radius: 8px;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100vh;
+	flex-direction: column;
+	color: rgb(191, 190, 190);
+	padding: 40px;
+  }
+
+  /* checkbox styling */
+  input[type="checkbox"] {
+	background-color: rgb(58, 56, 54);
+	border: 1px solid red !important;
   }
