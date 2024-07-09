@@ -45,12 +45,14 @@ dates.forEach((date) => {
 });
 
 const tasks = [];
+
 const input = document.querySelector(".form-control");
 const addTask = document.querySelector("#addTask");
 const myTasks = document.querySelector(".my-tasks");
 const counter = document.querySelector(".count");
 const progress = document.querySelector(".progress");
 const progressBar = document.querySelector(".progress-bar");
+const taskCount = document.querySelector(".count");
 
 addTask.addEventListener("click", () => {
   const task = input.value;
@@ -107,6 +109,8 @@ function renderTasks() {
       tasks.splice(index, 1);
       allTasksCount--;
       renderTasks();
+      updateBarWidths();
+      updateTasksCount();
     });
     counter.innerHTML = `(${tasks.length})`
     taskLi.appendChild(taskContent);
@@ -157,3 +161,9 @@ function updateBarWidths() {
 }
 
 updateBarWidths();
+
+function updateTasksCount() {
+  taskCount.innerHTML = `(${tasks.length})`;
+}
+
+updateTasksCount();
