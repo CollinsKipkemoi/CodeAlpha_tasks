@@ -107,6 +107,9 @@ function renderTasks() {
     Xbutton.setAttribute("class", "fa-solid fa-trash");
     Xbutton.addEventListener("click", () => {
       tasks.splice(index, 1);
+      if(task.done) {
+        doneTasksCount--;
+      }
       allTasksCount--;
       renderTasks();
       updateBarWidths();
